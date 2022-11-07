@@ -1,0 +1,18 @@
+version: '3.7'
+
+services:
+  ledger-db:
+    image:  amazon/dynamodb-local
+    container_name: ledger-db
+    restart: always
+    volumes:
+      -  ./tmp/dynamodb-data:/home/dynamodblocal/data
+    ports:
+      - 8000:8000
+    command: "-jar DynamoDBLocal.jar -sharedDb -dbPath /home/dynamodblocal/data/"
+    networks:
+      - ledger-shared-network
+
+networks:
+  ledger-shared-network:
+    name: ledger-shared-network

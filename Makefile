@@ -11,3 +11,6 @@ cli:
 
 run: dependecies cli
 	$(BUILD_DIR)
+
+resources:
+	docker-compose -f docker-compose-shared.yml up -d
